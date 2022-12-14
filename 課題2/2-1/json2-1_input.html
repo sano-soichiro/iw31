@@ -1,0 +1,37 @@
+<!doctype html><html><head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta charset="utf-8" content=""><title>JSONテスト</title>
+
+</head>
+<body>
+<h1>JSON2-1（PHP⇒Javascript）※PHPから受信したJSONを表示</h1>
+<button id="button">ボタン</button><br><br>
+JSで作成した連想配列をJson化（JSON.stringify）:<br><div id="output1"></div><hr>
+PHPから受信した値を出力:<br><div id="output2"></div><hr>
+PHPから受信した値をParse（JSON.parse）した値:<br>
+<div id="output3"></div><br>
+
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById("button").addEventListener("click" , function() {
+        $.ajax({
+            url: "./json2-1_save.php",
+            type: "GET",
+        })
+        .done(function(data){
+            document.getElementById("output2").innerHTML = data;
+            document.getElementById("output3").innerHTML = "";
+            const json_data = JSON.parse(data);
+            for (var key in json_data){
+                $("#output3").append("キー:" + key + "  ");
+                $("#output3").append("値:" + json_data[key] + "<br>");
+            }
+        })
+        .fail(function(data){
+            console.log("error");
+        })
+    })
+</script>
+</body>
+</html>

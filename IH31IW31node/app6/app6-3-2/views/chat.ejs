@@ -1,0 +1,17 @@
+<%- include('partials/header.ejs'); %>
+<h1>WebSocket Chat</h1> 
+<a href="/chat1?id=<%= id %>&username=<%= username %>">チャットルーム1</a>
+<a href="/chat2?id=<%= id %>&username=<%= username %>">チャットルーム2</a><hr>
+<form id="chatForm">
+    ユーザー名<input type="text" id="username" value="<%= username %> ">
+    コメント<input type="text" id="message">
+    <input type="submit" class="button" value="Send">
+</form>
+<hr>
+<ul id="output"></ul>
+<script>
+    const id = "<%= id %>";
+</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/javascript.js"></script>
+<%- include('partials/footer.ejs'); %>

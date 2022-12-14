@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" content="">
+<title>JSONテスト</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>JSON2-2（Javascript⇒PHP）</h1>
+<button id="button">ボタン</button><br><br>
+JSで作成した連想配列をJson化（JSON.stringify）:<br><div id="output1"></div><hr>
+PHPから受信した値を出力:<br><div id="output2"></div><hr>
+PHPから受信した値をParse（JSON.parse）した値:<br>
+<div id="output3"></div><br>
+<script type="text/javascript">
+    document.getElementById("button").addEventListener("click" , function(){
+        var ary_data = new Array(100);
+        for (var i = 0; i < ary_data.length; i++){
+            ary_data[i] = i;
+        }
+        document.getElementById("output1").innerHTML = JSON.stringify(ary_data);
+        $.ajax({
+            url: "./json2-2_save.php",
+            type: "GET",
+            data:{
+                ary_data: ary_data
+            }
+        })
+        .done(function(data){
+            document.getElementById("output2").innerHTML = data;
+            const json_data = JSON.parse(data);
+            document.getElementById("output3").innerHTML = "";
+            for (var key in json_data){
+                $("#output3").append("キー:" + key + "  ");
+                $("#output3").append("値:" + json_data[key] + "<br>");
+            }
+        })
+        .fail(function(data){
+            console.log("error");
+        })
+    })
+
+</script>
+</body>
+</html>

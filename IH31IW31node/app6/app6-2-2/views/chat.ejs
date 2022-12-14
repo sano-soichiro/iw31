@@ -1,0 +1,12 @@
+<%- include('partials/header.ejs'); %>
+<h1>WebSocket Chat<%= chatid %></h1> 
+<form id="chatForm">
+    <input id="chat-input1" type="text">
+    <input id="chat-input2" type="text">
+    <input type="submit" class="button" value="Send">
+</form>
+<ul id="output"></ul>
+<script>let chatid = '<%= chatid %>';</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/javascript.js"></script>
+<%- include('partials/footer.ejs'); %>

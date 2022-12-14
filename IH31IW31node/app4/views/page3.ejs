@@ -1,0 +1,109 @@
+<%- include('partials/header.ejs'); %>
+    <h1>node4-5 Hello page3 Page</h1>
+    ユーザメンテナンス（非同期通信）<br>
+    <input id="textvalue" type="text"><br>
+    <input id="getbutton" type="submit" value="取得（GET）">
+    <input id="postbutton" type="submit" value="登録（POST）">
+    <input id="putbutton" type="submit" value="変更（PUT）">
+    <input id="deletebutton" type="submit" value="削除（DELETE）">
+    <hr>
+    <div id="output"></div>
+    <hr>
+
+    <script>
+            //GET処理
+    $("#getbutton").click(function(e){
+        let values = {
+            name: $("#textvalue").val()
+        };
+        $.ajax({
+            type: "GET",
+            data: values,
+            dataType: "JSON",
+            url: "/users",
+        }).done(function(results){
+            console.log(typeof results);
+            console.log(results);
+            $("#output").append("GET:"+results.name+"<br>");
+        }).fail(function(xhr , textStatus , errorThrown){
+            console.log("ajax通信に失敗しました");
+        }).always(function(xhr){
+
+        });
+    });
+
+    //POST処理
+    $("#postbutton").click(function(e){
+        let values = {
+            name: $("#textvalue").val()
+        };
+        $.ajax({
+            type: "GET",
+            data: values,
+            dataType: "JSON",
+            url: "/users",
+        }).done(function(results){
+            console.log(typeof results);
+            console.log(results);
+            $("#output").append("GET:"+results.name+"<br>");
+        }).fail(function(xhr , textStatus , errorThrown){
+            console.log("ajax通信に失敗しました");
+        }).always(function(xhr){
+
+        });
+    });
+
+    //PUT処理
+    $("#putbutton").click(function(e){
+        let values = {
+            name: $("#textvalue").val()
+        };
+        $.ajax({
+            type: "GET",
+            data: values,
+            dataType: "JSON",
+            url: "/users",
+        }).done(function(results){
+            console.log(typeof results);
+            console.log(results);
+            $("#output").append("GET:"+results.name+"<br>");
+        }).fail(function(xhr , textStatus , errorThrown){
+            console.log("ajax通信に失敗しました");
+        }).always(function(xhr){
+
+        });
+    });
+
+    //DELETE処理
+    $("#deletebutton").click(function(e){
+        let values = {
+            name: $("#textvalue").val()
+        };
+        $.ajax({
+            type: "GET",
+            data: values,
+            dataType: "JSON",
+            url: "/users",
+        }).done(function(results){
+            console.log(typeof results);
+            console.log(results);
+            $("#output").append("GET:"+results.name+"<br>");
+        }).fail(function(xhr , textStatus , errorThrown){
+            console.log("ajax通信に失敗しました");
+        }).always(function(xhr){
+
+        });
+    });
+
+    
+
+
+
+
+
+
+    </script>
+
+    <img src="/image/image1.jpg"><br />
+    <img src="/image/image2.png">
+<%- include('partials/footer.ejs'); %>
